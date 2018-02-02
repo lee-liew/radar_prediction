@@ -3,11 +3,20 @@ import numpy as np
 import cv2
 import os
 
+# OS agnostic relative file path
+# get the current directory path
 dir = os.path.dirname(__file__)
-path = os.path.join(os.sep, dir, 'sample data', 'IDR423.T.201801310342.png')
-#path = r"D:\cxwhite\Pycharm\playground\sample data\IDR423.T.201801310342.png"
 
-im = cv2.imread(path)
+# OS agnostic relative file path
+# load sample image
+test_image_path = os.path.join(os.sep, dir, 'sample_data', 'IDR423.T.201801310342.png')
+
+# OS agnostic relative file path
+# load colour to mm/hr concurrency table
+rainfall_colour_table = os.path.join(os.sep, dir, 'sample_data', 'IDR423.T.201801310342.png')
+
+
+im = cv2.imread(test_image_path)
 key = np.genfromtxt(r"D:\cxwhite\Pycharm\playground\sample data\radar colours.csv", delimiter=',', dtype=int)
 print(key)
 unique_data = set(tuple(v) for m2d in im for v in m2d)
