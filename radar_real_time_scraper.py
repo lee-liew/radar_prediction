@@ -99,7 +99,8 @@ def update_radar_db(file_name, rainfall_intensity_df):
         efficient_radar_df = pd.merge(radar_df, remove_index, left_index=True, right_index=True)
 
         # connect to database and append radar data and file name
-        print('Appending image for radar {} at {:02}:{:02} on {:02}/{:02}/{}'.format(radar_id, radar_hour, radar_minute, radar_day, radar_month, radar_year))
+        print('Appending image for radar {} at {:02}:{:02} on {:02}/{:02}/{}'.format(
+            radar_id, radar_hour, radar_minute, radar_day, radar_month, radar_year))
         engine = create_engine('postgresql://postgres:Postpassword1@localhost:5432/postgres')
         efficient_radar_df.to_sql('radar_reflectivity', engine, if_exists='append', index=False)  # append radar data
         file_list_df = pd.DataFrame(columns=["file_name"], data=[[file_name]])
