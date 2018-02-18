@@ -157,6 +157,7 @@ def main():
 
         # get a list of the radar files to download
         update_list = check_for_new_radar(list_of_files, db_engine)
+        update = None
 
         # load any files that haven't been loaded already
         for file in update_list:
